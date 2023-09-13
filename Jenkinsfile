@@ -13,8 +13,7 @@ pipeline {
             steps {
                 // SSH into your EC2 instance and run npm install
                 sh '''
-					npm install
-					chmod +x ./script/deploy
+					/usr/bin/chmod +x ./script/deploy
 					./script/deploy
                 '''
             }
