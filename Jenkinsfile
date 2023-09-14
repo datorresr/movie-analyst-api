@@ -25,9 +25,11 @@ pipeline {
                 dir('/var/lib/jenkins/workspace/MoviesBackEnd') {
                     // Install Mocha locally within your project directory
                     sh 'npm install mocha --save-dev'
-                }
                     // Run your Mocha tests
-                sh 'mocha ./test/test.js'
+                    sh 'mocha ./test/test.js'
+                }
+                    
+                
                 
             }
         }
