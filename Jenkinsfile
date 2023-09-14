@@ -26,7 +26,7 @@ pipeline {
                     // Install Mocha locally within your project directory
                     sh 'npm install mocha --save-dev'
                     // Run your Mocha tests
-                    sh 'mocha ./test/test.js'
+                    sh '/var/lib/jenkins/.nvm/versions/node/v18.12.1/bin/mocha ./test/test.js'
                 }
                     
                 
