@@ -9,10 +9,12 @@ pipeline {
             }
         }
 
-        stage('Install Mocha Globally') {
+        stage('Install NPM DEV') {
             steps {
                 // Install Mocha globally
-                sh 'npm install -g mocha'
+                sh 'npm install --save-dev'
+                sh 'node server.js &'
+                sleep 10  // Adjust as needed                
             }
         }
 
@@ -20,12 +22,10 @@ pipeline {
             steps {
                         // Install Mocha globally if not already installed
 
-                sh 'npm install --save-dev'
-                sh 'node server.js &'
-                sleep 10  // Adjust as needed
-
-                // Run your Mocha tests
-                sh 'mocha test/test.js'
+                dir('/var/lib/jenkins/workspace/MoviesBackEnd') {
+                    // Install Mocha locally within your project directory
+                    sh 'npm install mocha --save-dev'
+                }
                     // Run your Mocha tests
                 sh 'mocha ./test/test.js'
                 
