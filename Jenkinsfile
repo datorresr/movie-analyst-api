@@ -9,16 +9,26 @@ pipeline {
             }
         }
 
-
+        stage('Install Mocha Globally') {
+            steps {
+                // Install Mocha globally
+                sh 'npm install -g mocha'
+            }
+        }
 
         stage('Testing') {
             steps {
                         // Install Mocha globally if not already installed
 
                 sh 'npm install --save-dev'
+                sh 'node server.js &'
+                sleep 10  // Adjust as needed
 
+                // Run your Mocha tests
+                sh 'mocha test/test.js'
                     // Run your Mocha tests
                 sh 'mocha ./test/test.js'
+                
             }
         }
 
