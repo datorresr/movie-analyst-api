@@ -11,22 +11,24 @@ pipeline {
 
         stage('Install Node.js and npm') {
             steps {
-                // Install nvm
-                sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash'
+                sh '''
+                    // Install nvm
+                    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
-                // Load nvm
-                sh 'export NVM_DIR="$HOME/.nvm"'
-                sh '[ -s "$NVM_DIR/nvm.sh" ] && \\. "$NVM_DIR/nvm.sh"'
+                    // Load nvm
+                    export NVM_DIR="$HOME/.nvm"
+                    [ -s "$NVM_DIR/nvm.sh" ] && \\. "$NVM_DIR/nvm.sh"
 
-                // Install the desired Node.js version
-                sh 'nvm install 14'  // Replace with your desired Node.js version
+                    // Install the desired Node.js version
+                    nvm install 14  // Replace with your desired Node.js version
 
-                // Use the installed Node.js version
-                sh 'nvm use 14'
+                    // Use the installed Node.js version
+                    nvm use 14
 
-                // Verify Node.js and npm installation
-                sh 'node -v'
-                sh 'npm -v'
+                    // Verify Node.js and npm installation
+                    node -v
+                    npm -v
+                '''
 
             }
         }
