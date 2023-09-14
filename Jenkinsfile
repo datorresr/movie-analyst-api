@@ -27,21 +27,15 @@ pipeline {
                 // Verify Node.js and npm installation
                 sh 'node -v'
                 sh 'npm -v'
+
+                // Install Mocha globally if not already installed
+                sh 'npm install -g mocha'
+
+                    // Run your Mocha tests
+                sh 'mocha ./test/test.js'
             }
         }
 
-        stage('Run Tests') {
-            steps {
-              
-                dir('.') { 
-                    // Install Mocha globally if not already installed
-                    sh 'npm install -g mocha'
-
-                    // Run your Mocha tests
-                    sh 'mocha ./test/test.js'
-                }
-            }
-         }
 
 
         stage('Install Dependencies and Deploy to EC2') {
