@@ -13,17 +13,17 @@ pipeline {
             steps {
                 sh '''
                     // Install nvm
-                    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+                    sudo curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
                     // Load nvm
                     export NVM_DIR="$HOME/.nvm"
                     [ -s "$NVM_DIR/nvm.sh" ] && \\. "$NVM_DIR/nvm.sh"
 
                     // Install the desired Node.js version
-                    nvm install 14  // Replace with your desired Node.js version
+                    sudo nvm install 14  // Replace with your desired Node.js version
 
                     // Use the installed Node.js version
-                    nvm use 14
+                    sudo nvm use 14
 
                     // Verify Node.js and npm installation
                     node -v
@@ -36,7 +36,7 @@ pipeline {
         stage('Testing') {
             steps {
                         // Install Mocha globally if not already installed
-                sh 'npm install'
+                sh 'sudo npm install'
 
                     // Run your Mocha tests
                 sh 'mocha ./test/test.js'
