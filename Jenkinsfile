@@ -28,8 +28,13 @@ pipeline {
                 sh 'node -v'
                 sh 'npm -v'
 
-                // Install Mocha globally if not already installed
-                sh 'npm install -g mocha'
+            }
+        }
+
+        stage('Testing') {
+            steps {
+                        // Install Mocha globally if not already installed
+                sh 'npm install'
 
                     // Run your Mocha tests
                 sh 'mocha ./test/test.js'
