@@ -13,7 +13,7 @@ pipeline {
             steps {
                 // Install Mocha globally
                 sh 'npm install --save-dev'
-                sh 'node server.js &'
+                //sh 'node server.js &'
                 sleep 10  // Adjust as needed                
             }
         }
