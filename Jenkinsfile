@@ -14,8 +14,8 @@ pipeline {
         stage('Testing') {
             steps {
                         // Install Mocha globally if not already installed
-                sh 'whoami'
-                //sh 'sudo npm install -g mocha'
+
+                sh 'sudo npm install -g mocha'
 
                     // Run your Mocha tests
                 sh 'mocha ./test/test.js'
