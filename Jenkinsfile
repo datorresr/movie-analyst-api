@@ -9,7 +9,28 @@ pipeline {
             }
         }
 
-         stage('Run Tests') {
+        stage('Install Node.js and npm') {
+            steps {
+                // Install nvm
+                sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash'
+
+                // Load nvm
+                sh 'export NVM_DIR="$HOME/.nvm"'
+                sh '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
+
+                // Install the desired Node.js version
+                sh 'nvm install 14'  // Replace with your desired Node.js version
+
+                // Use the installed Node.js version
+                sh 'nvm use 14'
+
+                // Verify Node.js and npm installation
+                sh 'node -v'
+                sh 'npm -v'
+            }
+        }
+
+        stage('Run Tests') {
             steps {
               
                 dir('.') { 
