@@ -15,7 +15,7 @@ pipeline {
             steps {
                         // Install Mocha globally if not already installed
 
-                sh 'sudo npm install -g mocha'
+                sh 'npm install --save-dev'
 
                     // Run your Mocha tests
                 sh 'mocha ./test/test.js'
