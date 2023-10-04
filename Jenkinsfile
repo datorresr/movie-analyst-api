@@ -12,7 +12,6 @@ pipeline {
         stage('Install NPM DEV') {
             steps {
                 // Install Mocha globally
-                sh 'sudo apt install npm'
                 sh 'npm install --save-dev'
                 //sh 'node server.js &'
                 sleep 10  // Adjust as needed                
