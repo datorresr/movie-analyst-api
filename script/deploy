@@ -4,7 +4,7 @@
 INSTANCE_IDS=$(aws autoscaling describe-auto-scaling-instances \
   --region us-east-1 \
   --output text \
-  --query "AutoScalingInstances[?AutoScalingGroupName=='MoviesBackEndAutoScaling'].InstanceId")
+  --query "AutoScalingInstances[?AutoScalingGroupName=='MoviesBackEndAS'].InstanceId")
 
 # Iterar sobre las direcciones IP y ejecutar el script SSH en cada instancia
 for INSTANCE_ID in $INSTANCE_IDS; do
